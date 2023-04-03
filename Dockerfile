@@ -1,16 +1,16 @@
 FROM node:15-alpine
 
 # Create app directory
-WORKDIR /usr/src/app
+WORKDIR /app
 
 COPY package*.json ./
+COPY prisma ./prisma/
 
-RUN npm install
+# Disable cache during npm install
+RUN npm install --no-cache
+
 COPY . . 
 
-# Add Prisma CLI to the container
-RUN npm install prisma --save-dev
-
-RUN npx prisma generate
-
 EXPOSE 5000
+
+CMD ["./startup.sh"]

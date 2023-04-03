@@ -3,19 +3,29 @@ version: "3.9"
 services:
   db:
     image: "postgres"
+    container_name: postgres
     ports:
       - "5432:5432"
-    restart: always
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    restart: unless-stopped
     env_file:
       - .env
       
   server:
     build: .
-    command:  "npx prisma migrate dev && npm run dev"
+    command: "npm run dev --watch"
     ports:
       - "5000:5000"
-    restart: always
+    restart: unless-stopped
+    container_name: prisma-api
     env_file:
       - .env
+    volumes:
+      - ./prisma:/app/prisma
+      - ./src:/app/src
     depends_on:
       - db
+
+volumes:
+  postgres-data:
