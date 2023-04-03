@@ -14,10 +14,10 @@ services:
       
   server:
     build: .
-    command: "npm run dev --watch"
+    command: "npm run dev"
     ports:
       - "5000:5000"
-    restart: unless-stopped
+    restart: always
     container_name: prisma-api
     env_file:
       - .env

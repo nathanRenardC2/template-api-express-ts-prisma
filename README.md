@@ -1,6 +1,6 @@
-# READ ME (Docker)
+# READ ME
 
-## Server container 
+## Server container (Docker)
 
 When we make a new model, we need to make migration on database, this is the step to follow
 
@@ -39,7 +39,7 @@ npx prisma generate
 exit
 ```
 
-## Database container
+## Database container (Docker)
 
 If you want to see data inside database, you need to enter into postgres container
 
