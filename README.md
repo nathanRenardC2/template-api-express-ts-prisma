@@ -1,38 +1,56 @@
 # READ ME (Docker)
 
+## Server container 
+
 When we make a new model, we need to make migration on database, this is the step to follow
 
-## Start docker container
+### Start docker container
 
 ```
 docker compose up
 ```
 
-## Enter inside server container
+### Enter inside server container
 
 ```
 docker exec -it prisma-api sh
 ```
 
-## Make migration
+### Make migration
 
-### Step 1
+Step 1
 ```
 npx prisma migrate dev
 ```
 
-### Step 2
+Step 2
 ```
 npx prisma migrate deploy
 ```
 
-### Step 3
+Step 3
 ```
 npx prisma generate
 ```
 
-## Exit the container
+### Exit the container
 
 ```
 exit
+```
+
+## Database container
+
+If you want to see data inside database, you need to enter into postgres container
+
+### Enter inside postgres container
+
+```
+docker exec -it postgres psql -U postgres -d db
+```
+
+### Make your request (example)
+
+```
+SELECT * FROM artist;
 ```
