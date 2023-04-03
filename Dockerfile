@@ -11,4 +11,6 @@ COPY . .
 # Add Prisma CLI to the container
 RUN npm install prisma --save-dev
 
+RUN npx prisma generate
+
 EXPOSE 5000

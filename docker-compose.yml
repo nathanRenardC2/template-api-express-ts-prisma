@@ -8,9 +8,10 @@ services:
     restart: always
     env_file:
       - .env
+      
   server:
     build: .
-    command: "npx prisma migrate dev && npm run dev"
+    command:  "npx prisma migrate dev && npm run dev"
     ports:
       - "5000:5000"
     restart: always
