@@ -13,4 +13,6 @@ COPY . .
 
 EXPOSE 5000
 
+COPY startup.sh .
+
 CMD ["./startup.sh"]

@@ -14,7 +14,7 @@ services:
       
   server:
     build: .
-    command: "npm run dev"
+    command: "./startup.sh"
     ports:
       - "5000:5000"
     restart: always
