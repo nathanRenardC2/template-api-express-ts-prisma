@@ -2,7 +2,6 @@
 
 ## Server container (Docker)
 
-When we make a new model, we need to make migration on database, this is the step to follow
 
 ### Start docker container
 
@@ -16,7 +15,7 @@ docker compose up
 docker exec -it prisma-api sh
 ```
 
-### Make migration
+### Make migration (this steps are automatically make when you start docker)
 
 Step 1
 ```
