@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native"]
 }
 
 datasource db {
@@ -7,21 +8,31 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  posts Post[]
+model Genre {
+  id      String   @id @default(cuid())
+  name    String
+  tracks  Track[]  @relation("genreToTracks")
 }
 
-model Post {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  title     String
-  content   String?
-  published Boolean  @default(false)
-  viewCount Int      @default(0)
-  author    User?    @relation(fields: [authorId], references: [id])
-  authorId  Int?
+model Track {
+  id       String  @id @default(cuid())
+  title    String
+  genre    Genre   @relation("genreToTracks", fields: [genreId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  genreId  String
+  album Album @relation("albumToTracks", fields: [albumId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  albumId String
+}
+
+model Album{
+  id      String   @id @default(cuid())
+  title   String
+  tracks  Track[]  @relation("albumToTracks")
+  artist  Artist   @relation("artistToAlbums", fields: [artistId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  artistId String
+}
+
+model Artist{
+  id      String   @id @default(cuid())
+  name    String
+  album  Album[]  @relation("artistToAlbums")
 }

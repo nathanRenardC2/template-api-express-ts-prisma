@@ -1,17 +1,14 @@
-# Définir l'image de base
-FROM node:14-alpine
+FROM node:15-alpine
 
-# Créer le répertoire de travail
-WORKDIR /app
+# Create app directory
+WORKDIR /usr/src/app
 
-# Copier les fichiers de l'application dans l'image Docker
 COPY package*.json ./
-COPY tsconfig.json ./
-COPY prisma ./prisma
-COPY src ./src
 
-# Installer les dépendances de l'application
 RUN npm install
+COPY . . 
 
-# Exposer le port de l'API
-EXPOSE 3000
+# Add Prisma CLI to the container
+RUN npm install prisma --save-dev
+
+EXPOSE 5000
