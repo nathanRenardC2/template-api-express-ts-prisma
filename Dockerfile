@@ -15,6 +15,3 @@ RUN npm install
 
 # Exposer le port de l'API
 EXPOSE 3000
-
-# Démarrer l'application
-CMD ["npm", "run", "start"]

@@ -3,15 +3,20 @@ services:
   app:
     build:
       context: .
+    command: npx prisma db pull && npx prisma migrate dev && npx prisma generate && npm run start
     ports:
       - "3000:3000"
     depends_on:
       - db
+    env_file:
+      - .env
   db:
     image: postgres:13
     restart: always
     env_file:
       - .env
+    ports:
+      - "5432:5432"
     volumes:
       - dbdata:/var/lib/postgresql/data
 volumes:
