@@ -29,19 +29,19 @@ docker exec -it prisma-api sh
 npx prisma db seed
 ```
 
-### Make migration (this steps are automatically make when you start docker)
+### Make migration (**this steps are automatically make when you start docker**)
 
-Step 1
+* Step 1
 ```
 npx prisma migrate dev
 ```
 
-Step 2
+* Step 2
 ```
 npx prisma migrate deploy
 ```
 
-Step 3
+* Step 3
 ```
 npx prisma generate
 ```
@@ -52,7 +52,7 @@ npx prisma generate
 exit
 ```
 
-## Database container (Docker)
+## Database container (**Docker**)
 
 If you want to see data inside database, you need to enter into postgres container
 
@@ -62,7 +62,7 @@ If you want to see data inside database, you need to enter into postgres contain
 docker exec -it postgres psql -U postgres -d db
 ```
 
-### Make your request (example)
+### Make your request (**example**)
 
 ```
 SELECT * FROM "Artist";
