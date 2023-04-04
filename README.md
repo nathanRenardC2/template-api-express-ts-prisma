@@ -15,6 +15,12 @@ docker compose up
 docker exec -it prisma-api sh
 ```
 
+### Mockup 
+
+```
+npx prisma db seed
+```
+
 ### Make migration (this steps are automatically make when you start docker)
 
 Step 1

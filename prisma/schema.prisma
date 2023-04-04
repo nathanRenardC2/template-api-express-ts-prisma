@@ -22,6 +22,7 @@ model Track {
   genreId  String
   album Album @relation("albumToTracks", fields: [albumId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   albumId String
+  playlists Playlist[] @relation("playlistToTracks")
 }
 
 model Album{
@@ -36,4 +37,19 @@ model Artist{
   id      String   @id @default(cuid())
   name    String
   album  Album[]  @relation("artistToAlbums")
+}
+
+model User{
+  id String @id @default(cuid())
+  email String @unique
+  password String
+  playlists Playlist[] @relation("userToPlaylists")
+}
+
+model Playlist{
+  id String @id @default(cuid())
+  name String
+  user User @relation("userToPlaylists", fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId String
+  tracks Track[] @relation("playlistToTracks")
 }
