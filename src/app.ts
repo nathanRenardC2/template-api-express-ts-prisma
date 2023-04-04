@@ -3,7 +3,6 @@ import { MainRouter } from "./routes";
 import helmet from "helmet";
 import bodyParser from "body-parser";
 import cors from "cors";
-import swagger from "./swagger";
 
 const app: Application = express();
 
@@ -15,7 +14,5 @@ app.use(bodyParser.json());
 app.use(cors())
 // Ajout de la route principale
 app.use('/api', MainRouter);
-// Documentation Swagger
-swagger(app);
 
 export default app;

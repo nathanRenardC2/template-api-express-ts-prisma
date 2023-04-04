@@ -65,6 +65,5 @@ docker exec -it postgres psql -U postgres -d db
 ### Make your request (**example**)
 
 ```
-SELECT * FROM "Artist";
 SELECT * FROM "User";
 ```
