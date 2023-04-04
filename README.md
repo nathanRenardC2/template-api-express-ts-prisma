@@ -5,6 +5,14 @@
 
 ### Start docker container
 
+#### First time or when you change dockerfile (build image docker)
+
+```
+docker compose up --build
+```
+
+#### After build image
+
 ```
 docker compose up
 ```
