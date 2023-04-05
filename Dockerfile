@@ -11,8 +11,10 @@ RUN npm install --no-cache
 
 COPY . . 
 
+RUN npx prisma generate
+
+COPY entrypoint.sh .
+
 EXPOSE 5000
 
-COPY startup.sh .
-
-CMD ["./startup.sh"]
+CMD ["./entrypoint.sh"]
