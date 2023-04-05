@@ -6,13 +6,13 @@ import cors from "cors";
 
 const app: Application = express();
 
-// Helmet pour sécuriser les headers
+// Helmet to secure Express with various HTTP headers
 app.use(helmet());
-// bodyParser pour parser les requêtes
+// bodyParser to parse JSON bodies into JS objects
 app.use(bodyParser.json());
-// CORS pour autoriser les requêtes depuis un autre domaine
+// CORS to allow cross-origin requests
 app.use(cors())
-// Ajout de la route principale
+// add routes
 app.use('/api', MainRouter);
 
 export default app;
