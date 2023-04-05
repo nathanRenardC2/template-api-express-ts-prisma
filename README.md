@@ -2,7 +2,7 @@
 
 ## Configuration 
 
-* Add an .env file to the root of the project and copy content below
+* Step 1 : Add an .env file to the root of the project and copy content below
 
 ```
 POSTGRES_USER= "postgres"
@@ -10,6 +10,13 @@ POSTGRES_PASSWORD= "postgres"
 POSTGRES_DB= "db"
 DATABASE_URL=postgresql://postgres:postgres@db:5432/db?schema=public
 JWT_SECRET= "secret"
+```
+* Step 2 : Create a file named entrypoint.sh and copy content below
+
+```
+#!/bin/sh
+npx prisma migrate dev
+npm run dev
 ```
 
 ## Server container (Docker)
