@@ -1,7 +1,18 @@
 # READ ME
 
-## Server container (Docker)
+## Configuration 
 
+* Add an .env file to the root of the project and copy content below
+
+```
+POSTGRES_USER= "postgres"
+POSTGRES_PASSWORD= "postgres"
+POSTGRES_DB= "db"
+DATABASE_URL=postgresql://postgres:postgres@db:5432/db?schema=public
+JWT_SECRET= "secret"
+```
+
+## Server container (Docker)
 
 ### Start docker container
 
