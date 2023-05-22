@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon --watch src --ext ts --exec \"ts-node src/server.ts\" --legacy-watch"
+    "dev": "npx prisma migrate deploy && nodemon --watch src --ext ts --exec \"ts-node src/server.ts\" --legacy-watch"
   },
   "dependencies": {
     "@prisma/client": "4.12.0",

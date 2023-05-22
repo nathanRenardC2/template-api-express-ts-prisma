@@ -9,12 +9,12 @@ COPY prisma ./prisma/
 # Disable cache during npm install
 RUN npm install --no-cache
 
+# Install last version of prisma
+RUN npm i --save-dev prisma@latest
+RUN npm i @prisma/client@latest
+
 COPY . . 
 
 RUN npx prisma generate
 
-COPY entrypoint.sh .
-
-EXPOSE 5000
-
-CMD ["./entrypoint.sh"]
+EXPOSE 8082

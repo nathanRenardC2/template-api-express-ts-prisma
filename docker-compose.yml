@@ -11,11 +11,25 @@ services:
     restart: unless-stopped
     env_file:
       - .env
-      
+
+  pgbouncer:
+    image: "edoburu/pgbouncer"
+    container_name: pgbouncer
+    ports:
+      - "6432:6432"
+    volumes:
+      - ./pgbouncer:/etc/pgbouncer
+    restart: unless-stopped
+    depends_on:
+      - db
+    env_file:
+      - .env
+
   server:
     build: .
+    command: npm run dev
     ports:
-      - "5000:5000"
+      - "8082:8082"
     restart: always
     container_name: prisma-api
     env_file:
